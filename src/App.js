@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+// import {BrowserRouter as Router ,Routes,Route} from 'react-router-dom'
+// import Navbar from '../src/components/Navbar'
+import Thali from '../src/components/Thali'
+// // import { Outlet } from 'react-router-dom'
+import Menu from '../src/components/Menu'
+import Check from './components/Check'
+import Product from '../src/components/Product';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from './redux/store';
 
-function App() {
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <> <Thali /> </>,
+  },
+  {
+    path: "/Menu",
+    element: <> <Menu /></>
+  },
+  {
+    path: "/Product",
+    element: <><Product /> </>
+  },
+
+
+  {
+    path: "/Check",
+    element: <> <Check /></>
+  },
+
+
+
+])
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <RouterProvider store={store} router={router} />
+  )
 }
-
-export default App;
